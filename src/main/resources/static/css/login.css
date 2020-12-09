@@ -1,0 +1,26 @@
+*{
+    background-color: greenyellow ;
+}
+#userForm{
+    margin-left: 40%;
+    margin-top: 15%;
+   
+
+}
+
+
+label{
+    font-family: 'Prompt', sans-serif;
+    font-size: 22px;
+   
+}
+input{
+    height: 30px;
+    width: 250px;
+}
+button{
+    width: 250px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}

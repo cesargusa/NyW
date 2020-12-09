@@ -16,7 +16,7 @@ public class Usuario {
 
         public Usuario(){}
 
-        public Usuario(String usuario, String contraseña, String correo){
+        public Usuario(String usuario, String correo, String contraseña){
             _idUsuario=++idEstatica;
             this._usuario=usuario;
             this._correo=correo;

@@ -1,0 +1,73 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link th:href="@{/css/login.css}" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+</head>
+
+<body>
+    <form id="userForm"> 
+
+        <label>User</label><br>
+        <input type="text" id="user" ><br>
+        <label>Email</label><br>
+        <input type="email" id="email"><br>
+        <label>Password</label><br>
+        <input type="password" id="password"><br>
+        <label>Repeat Password</label><br>
+        <input type="password" id="repeatPassword" ><br><br>
+
+        <button class="newUsuario" >ENVIAR</button>
+     
+    </form>
+</body>
+<script>
+ 
+   
+
+
+   $(".newUsuario").click(function () {
+        let password= document.getElementById('password').value;
+        let repeatPassword= document.getElementById('repeatPassword').value;
+        let tamano = document.getElementById('password').length;
+        const tamanoPassword = 8;
+
+        if(tamano<tamanoPassword){
+            location.reload();
+            alert("Introduce una contraseña de al menos 8 digitos");
+        }else{
+            if(password === repeatPassword){
+        fetch("http://localhost:2222/usuarioss", {
+      method: "post",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+
+      body: JSON.stringify({
+        _usuario: document.getElementById('user').value,
+        _correo: document.getElementById('email').value,
+        _contraseña:document.getElementById('password').value
+      })
+
+    })
+      .then((response) => {
+
+        //Recarga la pagina para que se muestre la categoria añadida
+        location.reload();
+
+      })
+
+       }else{
+           location.reload();
+           alert("Introduce la misma contraseña");
+       }
+        }
+
+      
+    
+   });
+
+</script>
+</html>
