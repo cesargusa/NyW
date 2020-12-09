@@ -39,18 +39,5 @@ public class UsuariosController {
     }
 
 
-    @PostMapping("/usuarioss")
-    public Usuario AddUsuario(@RequestBody Usuario NewUsuario){
-        UsuariosController.usuarios.add(
-            new Usuario(
-                NewUsuario.get_usuario(),
-                NewUsuario.get_correo(),
-                NewUsuario.get_contraseña()
-            )
-        );
-        return NewUsuario;
-
-    }
-    
 
 }

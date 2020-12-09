@@ -18,26 +18,28 @@
         <label>Repeat Password</label><br>
         <input type="password" id="repeatPassword" ><br><br>
 
-        <button class="newUsuario" >ENVIAR</button>
+        <button type="submit" class="newUsuario" >ENVIAR</button>
      
     </form>
 </body>
 <script>
  
    
-
+//FUNCION QUE AL CLICKAR EN EL BOTON REVISA SI LA CONTRASEÑA TIENE MENOS DE 8 DIGITOS, SI ES ASI NO LANZA LA PETICION
+//SI LA CONTRASEÑA NO ES IGUAL AL CAMPO DE REPETIR CONTRASEÑA NO LANZA LA PETICION
+//SI TODO ES CORRECTO LANZA UN METODO POST, CREA EL USUARIO CON ESOS DATOS Y CON UN ID AUTOINCREMENTAL
+//TAMBIEN LE ASIGNA LA FECHA DE CUANDO SE CREO EL USUARIO
 
    $(".newUsuario").click(function () {
         let password= document.getElementById('password').value;
         let repeatPassword= document.getElementById('repeatPassword').value;
-        let tamano = document.getElementById('password').length;
+        let usuario = document.getElementById('user').value;
+        let correo = document.getElementById('email').value;
+        let tamano = document.getElementById('password').value.length;
         const tamanoPassword = 8;
 
-        if(tamano<tamanoPassword){
-            location.reload();
-            alert("Introduce una contraseña de al menos 8 digitos");
-        }else{
-            if(password === repeatPassword){
+       
+            if(password === repeatPassword && tamano>=8 && usuario!=='' && correo!==''){
         fetch("http://localhost:2222/usuarioss", {
       method: "post",
       headers: {
@@ -61,9 +63,9 @@
 
        }else{
            location.reload();
-           alert("Introduce la misma contraseña");
+           alert("Error, introduce todos los campos || Contraseñas no coinciden o son menores de 8 digitos");
        }
-        }
+        
 
       
     
