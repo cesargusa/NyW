@@ -1,13 +1,18 @@
 package com.example.NyW.ShopPage.Model;
 
 
+import java.time.LocalDate;
+
+import com.example.NyW.ShopPage.NyWShopPageApplication;
+
+
 public class Usuario {
         private static int idEstatica = 0;
         private int _idUsuario;
         private String _usuario;
         private String _correo;
         private String _contraseña;
-        private String _fechaRegistro;
+        private LocalDate _fechaRegistro;
 
         public Usuario(){}
 
@@ -16,6 +21,8 @@ public class Usuario {
             this._usuario=usuario;
             this._correo=correo;
             this._contraseña=contraseña;
+            Fecha();
+            
         }
 
         public static int getIdEstatica() {
@@ -50,12 +57,26 @@ public class Usuario {
             this._contraseña = _contraseña;
         }
 
-        public String get_fechaRegistro() {
-            return _fechaRegistro;
+      
+
+        public String get_correo() {
+            return _correo;
         }
 
-        public void set_fechaRegistro(String _fechaRegistro) {
-            this._fechaRegistro = _fechaRegistro;
+        public void set_correo(String _correo) {
+            this._correo = _correo;
         }
-        
+
+    public void Fecha(){
+        this._fechaRegistro= NyWShopPageApplication.da();
+    }
+
+    public LocalDate get_fechaRegistro() {
+        return _fechaRegistro;
+    }
+
+    public void set_fechaRegistro(LocalDate _fechaRegistro) {
+        this._fechaRegistro = _fechaRegistro;
+    }
+
 }
